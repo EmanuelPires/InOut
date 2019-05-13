@@ -5,6 +5,7 @@ import Home from "./components/Home";
 import Description from "./components/Description";
 import Consent from "./components/Consent";
 import EmailZip from "./components/EmailZip";
+import QuestionOne from "./components/QuestionOne";
 
 const RootStack = createStackNavigator(
   {
@@ -15,10 +16,13 @@ const RootStack = createStackNavigator(
       screen: Description
     },
     Consent: {
-      scree: Consent
+      screen: Consent
     },
     EmailZip: {
       screen: EmailZip
+    },
+    QuestionOne: {
+      screen: QuestionOne
     }
   },
   {
