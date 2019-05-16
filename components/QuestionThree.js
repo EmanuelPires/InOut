@@ -8,75 +8,92 @@ import {
 } from 'react-native';
 import ReactNavigation from 'react-navigation';
 
-export default class QuestionOne extends React.Component {
+export default class QuestionThree extends React.Component {
   state = {
     email: this.props.navigation.getParam('email', 'not the email!'),
-    zip: this.props.navigation.getParam('zip', 'NOT THE ZIP')
+    zip: this.props.navigation.getParam('zip', 'NOT THE ZIP'),
+    questionOneAnswer: this.props.navigation.getParam(
+      'questionOneAnswer',
+      'NOT THE ANSWER'
+    ),
+    questionTwoAnswer: this.props.navigation.getParam(
+      'questionTwoAnswer',
+      'NOT THE ANSWER'
+    )
   };
-
   render() {
-    console.log(this.state.email);
-    console.log(this.state.zip);
+    console.log(this.state);
+    const { navigation } = this.props;
 
     return (
       <View style={styles.container}>
         <View style={styles.description}>
-          <Text style={styles.questionText}>Where is home to you?</Text>
+          <Text style={styles.questionText}>
+            What art activities do you enjoy?
+          </Text>
         </View>
         <TouchableHighlight
           onPress={() =>
-            this.props.navigation.navigate('QuestionTwo', {
+            this.props.navigation.navigate('QuestionFour', {
               email: this.state.email,
               zip: this.state.zip,
-              questionOneAnswer: 'Fairfax County'
+              questionOneAnswer: this.state.questionOneAnswer,
+              questionTwoAnswer: this.state.questionTwoAnswer,
+              questionThreeAnswer: 'Art Galleries/Museums'
             })
           }
           underlayColor='white'
         >
           <View style={styles.button}>
-            <Text style={styles.buttonText}>A. FAIRFAX COUNTY</Text>
+            <Text style={styles.buttonText}>A. ART GALLERIES/MUSEUMS</Text>
           </View>
         </TouchableHighlight>
         <TouchableHighlight
           onPress={() =>
-            this.props.navigation.navigate('QuestionTwo', {
+            this.props.navigation.navigate('QuestionFour', {
               email: this.state.email,
               zip: this.state.zip,
-              questionOneAnswer: 'Family & Friends'
+              questionOneAnswer: this.state.questionOneAnswer,
+              questionTwoAnswer: this.state.questionTwoAnswer,
+              questionThreeAnswer: 'Public Art Installations'
             })
           }
           underlayColor='white'
         >
           <View style={styles.button}>
-            <Text style={styles.buttonText}>B. FAMILY AND FRIENDS</Text>
+            <Text style={styles.buttonText}>B. PUBLIC ART INSTALLATIONS</Text>
           </View>
         </TouchableHighlight>
         <TouchableHighlight
           onPress={() =>
-            this.props.navigation.navigate('QuestionTwo', {
+            this.props.navigation.navigate('QuestionFour', {
               email: this.state.email,
               zip: this.state.zip,
-              questionOneAnswer: 'Where I Grew Up'
+              questionOneAnswer: this.state.questionOneAnswer,
+              questionTwoAnswer: this.state.questionTwoAnswer,
+              questionThreeAnswer: 'Performances/Concerts'
             })
           }
           underlayColor='white'
         >
           <View style={styles.button}>
-            <Text style={styles.buttonText}>C. WHERE I GREW UP</Text>
+            <Text style={styles.buttonText}>C. WORKING</Text>
           </View>
         </TouchableHighlight>
         <TouchableHighlight
           onPress={() =>
-            this.props.navigation.navigate('QuestionTwo', {
+            this.props.navigation.navigate('QuestionFour', {
               email: this.state.email,
               zip: this.state.zip,
-              questionOneAnswer: 'Where I Am'
+              questionOneAnswer: this.state.questionOneAnswer,
+              questionTwoAnswer: this.state.questionTwoAnswer,
+              questionThreeAnswer: 'Interactive Activities'
             })
           }
           underlayColor='white'
         >
           <View style={styles.button}>
-            <Text style={styles.buttonText}>D. WHERE I AM</Text>
+            <Text style={styles.buttonText}>D. INTERACTIVE ACTIVITIES</Text>
           </View>
         </TouchableHighlight>
       </View>

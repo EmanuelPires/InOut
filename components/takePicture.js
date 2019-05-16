@@ -1,8 +1,37 @@
 import React from 'react';
 import { StyleSheet, View, Button, Text, TouchableOpacity } from 'react-native';
 
-export default class Home extends React.Component {
+export default class Picture extends React.Component {
+  state = {
+    email: this.props.navigation.getParam('email', 'not the email!'),
+    zip: this.props.navigation.getParam('zip', 'NOT THE ZIP'),
+    questionOneAnswer: this.props.navigation.getParam(
+      'questionOneAnswer',
+      'NOT THE ANSWER'
+    ),
+    questionTwoAnswer: this.props.navigation.getParam(
+      'questionTwoAnswer',
+      'NOT THE ANSWER'
+    ),
+    questionThreeAnswer: this.props.navigation.getParam(
+      'questionThreeAnswer',
+      'NOT THE ANSWER'
+    ),
+    questionFourAnswer: this.props.navigation.getParam(
+      'questionFourAnswer',
+      'NOT THE ANSWER'
+    ),
+    questionFiveAnswer: this.props.navigation.getParam(
+      'questionFiveAnswer',
+      'NOT THE ANSWER'
+    ),
+    questionSixAnswer: this.props.navigation.getParam(
+      'questionSixAnswer',
+      'NOT THE ANSWER'
+    )
+  };
   render() {
+    console.log(this.state);
     const {
       container,
       textHeaderStyle,
@@ -14,14 +43,14 @@ export default class Home extends React.Component {
     return (
       <View style={container}>
         <View style={topHalf}>
-          <Text style={textHeaderStyle}>In Out</Text>
+          <Text style={textHeaderStyle}>Take your picture!</Text>
         </View>
         <View style={bottomHalf}>
           <TouchableOpacity
             style={nextButton}
             onPress={() => this.props.navigation.navigate('Description')}
           >
-            <Text style={buttonText}>Start</Text>
+            <Text style={buttonText}>Circle</Text>
           </TouchableOpacity>
         </View>
       </View>

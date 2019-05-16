@@ -8,75 +8,82 @@ import {
 } from 'react-native';
 import ReactNavigation from 'react-navigation';
 
-export default class QuestionOne extends React.Component {
+export default class QuestionTwo extends React.Component {
   state = {
     email: this.props.navigation.getParam('email', 'not the email!'),
-    zip: this.props.navigation.getParam('zip', 'NOT THE ZIP')
+    zip: this.props.navigation.getParam('zip', 'NOT THE ZIP'),
+    questionOneAnswer: this.props.navigation.getParam(
+      'questionOneAnswer',
+      'NOT THE ANSWER'
+    )
   };
-
   render() {
-    console.log(this.state.email);
-    console.log(this.state.zip);
-
+    console.log(this.state);
     return (
       <View style={styles.container}>
         <View style={styles.description}>
-          <Text style={styles.questionText}>Where is home to you?</Text>
+          <Text style={styles.questionText}>
+            What is your role in the Springfield community?
+          </Text>
         </View>
         <TouchableHighlight
           onPress={() =>
-            this.props.navigation.navigate('QuestionTwo', {
+            this.props.navigation.navigate('QuestionThree', {
               email: this.state.email,
               zip: this.state.zip,
-              questionOneAnswer: 'Fairfax County'
+              questionOneAnswer: this.state.questionOneAnswer,
+              questionTwoAnswer: 'Seeking Culture'
             })
           }
           underlayColor='white'
         >
           <View style={styles.button}>
-            <Text style={styles.buttonText}>A. FAIRFAX COUNTY</Text>
+            <Text style={styles.buttonText}>A. SEEKING CULTURE</Text>
           </View>
         </TouchableHighlight>
         <TouchableHighlight
           onPress={() =>
-            this.props.navigation.navigate('QuestionTwo', {
+            this.props.navigation.navigate('QuestionThree', {
               email: this.state.email,
               zip: this.state.zip,
-              questionOneAnswer: 'Family & Friends'
+              questionOneAnswer: this.state.questionOneAnswer,
+              questionTwoAnswer: 'Dining/Shopping'
             })
           }
           underlayColor='white'
         >
           <View style={styles.button}>
-            <Text style={styles.buttonText}>B. FAMILY AND FRIENDS</Text>
+            <Text style={styles.buttonText}>B. DINING/SHOPPING</Text>
           </View>
         </TouchableHighlight>
         <TouchableHighlight
           onPress={() =>
-            this.props.navigation.navigate('QuestionTwo', {
+            this.props.navigation.navigate('QuestionThree', {
               email: this.state.email,
               zip: this.state.zip,
-              questionOneAnswer: 'Where I Grew Up'
+              questionOneAnswer: this.state.questionOneAnswer,
+              questionTwoAnswer: 'Working'
             })
           }
           underlayColor='white'
         >
           <View style={styles.button}>
-            <Text style={styles.buttonText}>C. WHERE I GREW UP</Text>
+            <Text style={styles.buttonText}>C. WORKING</Text>
           </View>
         </TouchableHighlight>
         <TouchableHighlight
           onPress={() =>
-            this.props.navigation.navigate('QuestionTwo', {
+            this.props.navigation.navigate('QuestionThree', {
               email: this.state.email,
               zip: this.state.zip,
-              questionOneAnswer: 'Where I Am'
+              questionOneAnswer: this.state.questionOneAnswer,
+              questionTwoAnswer: 'Residing'
             })
           }
           underlayColor='white'
         >
           <View style={styles.button}>
-            <Text style={styles.buttonText}>D. WHERE I AM</Text>
+            <Text style={styles.buttonText}>D. RESIDING</Text>
           </View>
         </TouchableHighlight>
       </View>
@@ -85,6 +92,9 @@ export default class QuestionOne extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  description: {
+    margin: 20
+  },
   container: {
     flex: 1,
     backgroundColor: '#8A2BE2',
@@ -104,8 +114,5 @@ const styles = StyleSheet.create({
   questionText: {
     fontSize: 25,
     color: 'white'
-  },
-  description: {
-    margin: 20
   }
 });

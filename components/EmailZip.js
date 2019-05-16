@@ -1,10 +1,19 @@
-import React from "react";
-import { StyleSheet, Text, View, Button, Alert, TextInput } from "react-native";
+import React from 'react';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Button,
+  Alert,
+  TextInput,
+  TouchableOpacity
+} from 'react-native';
+import ReactNavigation from 'react-navigation';
 
 export default class EmailZip extends React.Component {
   state = {
-    email: "",
-    zipCode: ""
+    email: '',
+    zipCode: ''
   };
 
   handleEmail = text => {
@@ -18,47 +27,63 @@ export default class EmailZip extends React.Component {
   };
 
   submitInfo = () => {
-    Alert.alert(this.state.email);
-    this.props.navigation.navigate("QuestionOne");
+    //Alert.alert(this.state.email);
+    this.props.navigation.navigate('QuestionOne', {
+      email: this.state.email,
+      zip: this.state.zipCode
+    });
   };
 
   render() {
+    const { container, smallText, input, buttonText } = styles;
     return (
-      <View style={styles.container}>
-        <Text>Email Address</Text>
+      <View style={container}>
+        <Text style={smallText}>Email Address</Text>
         <TextInput
-          style={styles.input}
-          keyboardType="email-address"
-          placeholder="Email"
+          style={input}
+          keyboardType='email-address'
+          placeholder='Email'
           onChangeText={this.handleEmail}
           value={this.state.email}
+          color='white'
         />
-        <Text>Zip Code</Text>
+        <Text style={smallText}>Zip Code</Text>
         <TextInput
-          style={styles.input}
-          keyboardType="numeric"
-          placeholder="Zip Code"
+          style={input}
+          keyboardType='numeric'
+          placeholder='Zip Code'
           onChangeText={this.handleZip}
           value={this.state.zip}
-          maxLength="5"
+          color='white'
+          maxLength={5}
         />
-        <Button title="Next" onPress={() => this.submitInfo()} />
+        <TouchableOpacity onPress={() => this.submitInfo()}>
+          <Text style={buttonText}>Next</Text>
+        </TouchableOpacity>
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  buttonText: {
+    fontSize: 30,
+    color: 'white'
+  },
+  smallText: {
+    fontSize: 15,
+    color: 'white'
+  },
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center"
+    backgroundColor: '#8A2BE2',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   input: {
     margin: 15,
     height: 40,
     width: 120,
-    borderBottomColor: "#7a42f4"
+    borderBottomColor: '#7a42f4'
   }
 });
