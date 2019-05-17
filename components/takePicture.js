@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import { StyleSheet, View, Button, Text, TouchableOpacity } from 'react-native';
 
 export default class Picture extends React.Component {
@@ -30,6 +31,22 @@ export default class Picture extends React.Component {
       'NOT THE ANSWER'
     )
   };
+
+  componentDidMount() {
+    const feedback = {
+      email: this.state.email,
+      Answer1: this.state.questionOneAnswer,
+      Answer2: this.state.questionTwoAnswer,
+      Answer3: this.state.questionThreeAnswer,
+      Answer4: this.state.questionFourAnswer,
+      Answer5: this.state.questionFiveAnswer,
+      Answer6: this.state.questionSixAnswer,
+      Zipcode: this.state.zip
+    };
+    console.log('Testing' + feedback);
+    return axios.post('http://localhost:3000/feedback/save', feedback);
+  }
+
   render() {
     console.log(this.state);
     const {
