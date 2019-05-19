@@ -12,6 +12,7 @@ import QuestionFour from './components/QuestionFour';
 import QuestionFive from './components/QuestionFive';
 import QuestionSix from './components/QuestionSix';
 import takePicture from './components/takePicture';
+import picturePreview from './components/picturePreview';
 
 const RootStack = createStackNavigator(
   {
@@ -47,10 +48,13 @@ const RootStack = createStackNavigator(
     },
     takePicture: {
       screen: takePicture
+    },
+    picturePreview: {
+      screen: picturePreview
     }
   },
   {
-    initialRouteName: 'Home'
+    initialRouteName: 'takePicture'
   }
 );
 

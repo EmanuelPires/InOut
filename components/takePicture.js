@@ -1,9 +1,12 @@
 import React from 'react';
 import axios from 'axios';
 import { StyleSheet, View, Button, Text, TouchableOpacity } from 'react-native';
+import { Camera, Permissions } from 'expo';
 
 export default class Picture extends React.Component {
   state = {
+    hasCameraPermission: null,
+    type: Camera.Constants.Type.front,
     email: this.props.navigation.getParam('email', 'not the email!'),
     zip: this.props.navigation.getParam('zip', 'NOT THE ZIP'),
     questionOneAnswer: this.props.navigation.getParam(
@@ -46,9 +49,31 @@ export default class Picture extends React.Component {
     console.log('Testing' + feedback);
     return axios.post('http://localhost:3000/feedback/save', feedback);
   }
+  async componentDidMount() {
+    const { status } = await Permissions.askAsync(Permissions.CAMERA);
+    this.setState({ hasCameraPermission: status === 'granted' });
+  }
+
+  async snapPhoto() {
+    console.log('Button Pressed');
+    if (this.camera) {
+      console.log('Taking photo');
+      const options = {
+        quality: 1,
+        base64: true,
+        fixOrientation: true,
+        exif: true
+      };
+      await this.camera.takePictureAsync(options).then(photo => {
+        photo.exif.Orientation = 1;
+        this.props.navigation.navigate('picturePreview', {
+          photo: photo.uri
+        });
+      });
+    }
+  }
 
   render() {
-    console.log(this.state);
     const {
       container,
       textHeaderStyle,
@@ -57,28 +82,55 @@ export default class Picture extends React.Component {
       topHalf,
       bottomHalf
     } = styles;
-    return (
-      <View style={container}>
-        <View style={topHalf}>
-          <Text style={textHeaderStyle}>Take your picture!</Text>
-        </View>
-        <View style={bottomHalf}>
-          <TouchableOpacity
-            style={nextButton}
-            onPress={() => this.props.navigation.navigate('Description')}
+    const { hasCameraPermission } = this.state;
+    if (hasCameraPermission === null) {
+      return <View />;
+    } else if (hasCameraPermission === false) {
+      return <Text>No access to camera</Text>;
+    } else {
+      return (
+        <View style={{ flex: 1 }}>
+          <Camera
+            style={{ flex: 1 }}
+            type={this.state.type}
+            ref={ref => {
+              this.camera = ref;
+            }}
           >
-            <Text style={buttonText}>Circle</Text>
-          </TouchableOpacity>
+            <View style={container}>
+              <TouchableOpacity
+                style={{
+                  justifyContent: 'flex-end',
+                  alignItems: 'center'
+                }}
+                onPress={this.snapPhoto.bind(this)}
+
+                // this.setState({
+                //   type:
+                //     this.state.type === Camera.Constants.Type.back
+                //       ? Camera.Constants.Type.front
+                //       : Camera.Constants.Type.back
+                // });
+              >
+                <Text
+                  style={{ fontSize: 18, marginBottom: 10, color: 'white' }}
+                >
+                  {' '}
+                  Snap Pic!{' '}
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </Camera>
         </View>
-      </View>
-    );
+      );
+    }
   }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#8A2BE2',
+    backgroundColor: 'transparent',
     alignItems: 'center',
     justifyContent: 'space-evenly'
   },
