@@ -6,7 +6,7 @@ This is my first React-Native App.
 
 This app is being created as both a learning experience and as an in-kind donation to the Fairfax County Arts Council's InOut Springfield installation.
 
-This app will take a user responses to a set of survey questions and post the answers to the questions to a Mongo database.
+The app is being built with Expo and React-Navigation.  The app will take a user's responses to a set of survey questions and post the answers to a Mongo database.
 
 ![Screen Shot 2019-05-21 at 2 11 32 PM](https://user-images.githubusercontent.com/43054091/58120212-bf0a9080-7bd2-11e9-97a8-f4ae1260a367.png)
 ![Screen Shot 2019-05-21 at 2 12 07 PM](https://user-images.githubusercontent.com/43054091/58120213-bf0a9080-7bd2-11e9-90f5-69c608b09848.png)
