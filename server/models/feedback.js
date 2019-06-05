@@ -12,6 +12,6 @@ const feedbackSchema = new Schema({
   Zipcode: { type: Number }
 });
 
-const feedback = mongoose.model('feedback', feedbackSchema);
+const feedback = mongoose.model('feedbacks', feedbackSchema);
 
 module.exports = feedback;

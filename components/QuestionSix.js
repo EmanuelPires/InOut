@@ -43,7 +43,7 @@ export default class QuestionSix extends React.Component {
         </View>
         <TouchableHighlight
           onPress={() =>
-            this.props.navigation.navigate('takePicture', {
+            this.props.navigation.navigate('ThankYouOne', {
               email: this.state.email,
               zip: this.state.zip,
               questionOneAnswer: this.state.questionOneAnswer,

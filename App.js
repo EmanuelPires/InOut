@@ -13,6 +13,7 @@ import QuestionFive from './components/QuestionFive';
 import QuestionSix from './components/QuestionSix';
 import takePicture from './components/takePicture';
 import picturePreview from './components/picturePreview';
+import ThankYouOne from './components/ThankYouOne';
 
 const RootStack = createStackNavigator(
   {
@@ -45,6 +46,9 @@ const RootStack = createStackNavigator(
     },
     QuestionSix: {
       screen: QuestionSix
+    },
+    ThankYouOne: {
+      screen: ThankYouOne
     },
     takePicture: {
       screen: takePicture

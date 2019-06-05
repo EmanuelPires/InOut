@@ -4,21 +4,33 @@ import {
   Text,
   View,
   TouchableOpacity,
-  Image,
   ImageBackground
 } from 'react-native';
 import ReactNavigation from 'react-navigation';
-import { Camera, Permissions } from 'expo';
+import { Camera, Permissions, Linking } from 'expo';
 
+import axios from 'axios';
 export default class picturePreview extends React.Component {
   state = {
-    photoURI: ''
+    photoURI: {}
   };
   componentDidMount() {
-    let photoURI = this.props.navigation.getParam('photo', 'NOT THE URI!');
-    this.setState({ photoURI: photoURI });
-    console.log('This is the photo URI: ');
+    let photoObject = this.props.navigation.getParam('photo', 'NOT THE URI!');
+    this.setState({ photoURI: photoObject });
+    console.log('This is the photo object: ' + photoObject.uri);
+
+    return (axios
+      .post(
+        'https://agile-hollows-10057.herokuapp.com/feedback/tweet',
+        photoObject.base64
+      )
+      .then(function(response) {
+        console.log(response);
+      }).catch = err => {
+      console.log(err);
+    });
   }
+
   render() {
     const {
       container,
@@ -31,13 +43,13 @@ export default class picturePreview extends React.Component {
       <View style={container}>
         <ImageBackground
           source={{
-            uri: this.props.navigation.getParam('photo', 'NOT THE URI!')
+            uri: this.state.photoURI.uri
           }}
           style={image}
           resizeMode='contain'
         >
           <TouchableOpacity style={description}>
-            <Text style={buttonText}>TWEET YOUR PICTURE!</Text>
+            <Text style={this.tweetSomething}>TWEET YOUR PICTURE!</Text>
           </TouchableOpacity>
         </ImageBackground>
       </View>

@@ -47,7 +47,10 @@ export default class Picture extends React.Component {
       Zipcode: this.state.zip
     };
     console.log('Testing' + feedback);
-    return axios.post('http://localhost:3000/feedback/save', feedback);
+    return axios.post(
+      'https://agile-hollows-10057.herokuapp.com/feedback/save',
+      feedback
+    );
   }
   async componentDidMount() {
     const { status } = await Permissions.askAsync(Permissions.CAMERA);
@@ -59,7 +62,7 @@ export default class Picture extends React.Component {
     if (this.camera) {
       console.log('Taking photo');
       const options = {
-        quality: 1,
+        quality: 0,
         base64: true,
         fixOrientation: true,
         exif: true
@@ -67,7 +70,7 @@ export default class Picture extends React.Component {
       await this.camera.takePictureAsync(options).then(photo => {
         photo.exif.Orientation = 1;
         this.props.navigation.navigate('picturePreview', {
-          photo: photo.uri
+          photo: photo
         });
       });
     }
