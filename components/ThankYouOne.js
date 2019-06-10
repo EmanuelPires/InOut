@@ -65,14 +65,14 @@ export default class ThankYouOne extends React.Component {
       description
     } = styles;
     return (
-      <View style={container}>
-        <View style={description}>
-          <Text style={smallText}>Thank you!</Text>
-        </View>
+      <View
+        style={container}
+        onPress={() => this.props.navigation.navigate('takePicture')}
+      >
         <TouchableOpacity
           onPress={() => this.props.navigation.navigate('takePicture')}
         >
-          <Text style={buttonText}>Take a Pic</Text>
+          <Text style={buttonText}>Now take a selfie!</Text>
         </TouchableOpacity>
       </View>
     );
@@ -81,7 +81,7 @@ export default class ThankYouOne extends React.Component {
 
 const styles = StyleSheet.create({
   buttonText: {
-    fontSize: 30,
+    fontSize: 60,
     color: 'white'
   },
   smallText: {

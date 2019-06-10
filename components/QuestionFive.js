@@ -30,85 +30,85 @@ export default class QuestionFive extends React.Component {
     )
   };
   render() {
-    console.log(this.state);
-
     return (
       <View style={styles.container}>
         <View style={styles.description}>
           <Text style={styles.questionText}>What makes you feel creative?</Text>
         </View>
-        <TouchableHighlight
-          onPress={() =>
-            this.props.navigation.navigate('QuestionSix', {
-              email: this.state.email,
-              zip: this.state.zip,
-              questionOneAnswer: this.state.questionOneAnswer,
-              questionTwoAnswer: this.state.questionTwoAnswer,
-              questionThreeAnswer: this.state.questionThreeAnswer,
-              questionFourAnswer: this.state.questionFourAnswer,
-              questionFiveAnswer: 'Community'
-            })
-          }
-          underlayColor='white'
-        >
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>A. COMMUNITY</Text>
-          </View>
-        </TouchableHighlight>
-        <TouchableHighlight
-          onPress={() =>
-            this.props.navigation.navigate('QuestionSix', {
-              email: this.state.email,
-              zip: this.state.zip,
-              questionOneAnswer: this.state.questionOneAnswer,
-              questionTwoAnswer: this.state.questionTwoAnswer,
-              questionThreeAnswer: this.state.questionThreeAnswer,
-              questionFourAnswer: this.state.questionFourAnswer,
-              questionFiveAnswer: 'Freedom'
-            })
-          }
-          underlayColor='white'
-        >
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>B. FREEDOM</Text>
-          </View>
-        </TouchableHighlight>
-        <TouchableHighlight
-          onPress={() =>
-            this.props.navigation.navigate('QuestionSix', {
-              email: this.state.email,
-              zip: this.state.zip,
-              questionOneAnswer: this.state.questionOneAnswer,
-              questionTwoAnswer: this.state.questionTwoAnswer,
-              questionThreeAnswer: this.state.questionThreeAnswer,
-              questionFourAnswer: this.state.questionFourAnswer,
-              questionFiveAnswer: 'Nature'
-            })
-          }
-          underlayColor='white'
-        >
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>C. NATURE</Text>
-          </View>
-        </TouchableHighlight>
-        <TouchableHighlight
-          onPress={() =>
-            this.props.navigation.navigate('QuestionSix', {
-              email: this.state.email,
-              zip: this.state.zip,
-              questionOneAnswer: this.state.questionOneAnswer,
-              questionTwoAnswer: this.state.questionTwoAnswer,
-              questionThreeAnswer: this.state.questionThreeAnswer,
-              questionFourAnswer: this.state.questionFourAnswer,
-              questionFiveAnswer: 'Traveling'
-            })
-          }
-          underlayColor='white'
-        >
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>D. TRAVELING</Text>
-          </View>
-        </TouchableHighlight>
+        <View>
+          <TouchableHighlight
+            onPress={() =>
+              this.props.navigation.navigate('QuestionSix', {
+                email: this.state.email,
+                zip: this.state.zip,
+                questionOneAnswer: this.state.questionOneAnswer,
+                questionTwoAnswer: this.state.questionTwoAnswer,
+                questionThreeAnswer: this.state.questionThreeAnswer,
+                questionFourAnswer: this.state.questionFourAnswer,
+                questionFiveAnswer: 'Community'
+              })
+            }
+            underlayColor='white'
+          >
+            <View style={styles.button}>
+              <Text style={styles.buttonText}>A. COMMUNITY</Text>
+            </View>
+          </TouchableHighlight>
+          <TouchableHighlight
+            onPress={() =>
+              this.props.navigation.navigate('QuestionSix', {
+                email: this.state.email,
+                zip: this.state.zip,
+                questionOneAnswer: this.state.questionOneAnswer,
+                questionTwoAnswer: this.state.questionTwoAnswer,
+                questionThreeAnswer: this.state.questionThreeAnswer,
+                questionFourAnswer: this.state.questionFourAnswer,
+                questionFiveAnswer: 'Freedom'
+              })
+            }
+            underlayColor='white'
+          >
+            <View style={styles.button}>
+              <Text style={styles.buttonText}>B. FREEDOM</Text>
+            </View>
+          </TouchableHighlight>
+          <TouchableHighlight
+            onPress={() =>
+              this.props.navigation.navigate('QuestionSix', {
+                email: this.state.email,
+                zip: this.state.zip,
+                questionOneAnswer: this.state.questionOneAnswer,
+                questionTwoAnswer: this.state.questionTwoAnswer,
+                questionThreeAnswer: this.state.questionThreeAnswer,
+                questionFourAnswer: this.state.questionFourAnswer,
+                questionFiveAnswer: 'Nature'
+              })
+            }
+            underlayColor='white'
+          >
+            <View style={styles.button}>
+              <Text style={styles.buttonText}>C. NATURE</Text>
+            </View>
+          </TouchableHighlight>
+          <TouchableHighlight
+            onPress={() =>
+              this.props.navigation.navigate('QuestionSix', {
+                email: this.state.email,
+                zip: this.state.zip,
+                questionOneAnswer: this.state.questionOneAnswer,
+                questionTwoAnswer: this.state.questionTwoAnswer,
+                questionThreeAnswer: this.state.questionThreeAnswer,
+                questionFourAnswer: this.state.questionFourAnswer,
+                questionFiveAnswer: 'Traveling'
+              })
+            }
+            underlayColor='white'
+          >
+            <View style={styles.button}>
+              <Text style={styles.buttonText}>D. TRAVELING</Text>
+            </View>
+          </TouchableHighlight>
+        </View>
       </View>
     );
   }
@@ -119,23 +119,28 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#8A2BE2',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'space-evenly',
+    textAlign: 'center'
   },
   button: {
     marginBottom: 30,
-    width: 260,
+    width: 520,
     alignItems: 'center',
     backgroundColor: 'white'
   },
   buttonText: {
     padding: 20,
-    color: 'black'
+    color: 'black',
+    fontSize: 30
   },
   questionText: {
-    fontSize: 25,
-    color: 'white'
+    fontSize: 60,
+    color: 'white',
+    textAlign: 'center'
   },
   description: {
-    margin: 20
+    margin: 20,
+    height: 150,
+    marginTop: 90
   }
 });

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Button, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Image, Text, TouchableOpacity } from 'react-native';
 
 export default class Home extends React.Component {
   render() {
@@ -9,12 +9,13 @@ export default class Home extends React.Component {
       nextButton,
       buttonText,
       topHalf,
-      bottomHalf
+      bottomHalf,
+      logo
     } = styles;
     return (
       <View style={container}>
         <View style={topHalf}>
-          <Text style={textHeaderStyle}>In Out</Text>
+          <Image source={require('../assets/INOUT_logo-14.png')} style={logo} />
         </View>
         <View style={bottomHalf}>
           <TouchableOpacity
@@ -52,5 +53,9 @@ const styles = StyleSheet.create({
   },
   bottomHalf: {
     justifyContent: 'flex-start'
+  },
+  logo: {
+    width: 350,
+    height: 70
   }
 });

@@ -1,14 +1,21 @@
 import React from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  Button,
-  TouchableOpacity,
-  sm
-} from 'react-native';
+import axios from 'axios';
+import { StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native';
 
 export default class ThankYouTwo extends React.Component {
+  componentDidMount() {
+    // let photoObject = this.props.navigation.getParam('photo', 'NOT THE URI!');
+    // return (axios
+    //   .post(
+    //     'https://agile-hollows-10057.herokuapp.com/feedback/tweet',
+    //     photoObject
+    //   )
+    //   .then(function() {
+    //     console.log('tweeted!');
+    //   }).catch = err => {
+    //   console.log('Error: ' + err);
+    // });
+  }
   render() {
     const {
       container,
@@ -19,13 +26,10 @@ export default class ThankYouTwo extends React.Component {
     } = styles;
     return (
       <View style={container}>
-        <View style={description}>
-          <Text style={smallText}>Thank you!</Text>
-        </View>
         <TouchableOpacity
           onPress={() => this.props.navigation.navigate('Home')}
         >
-          <Text style={buttonText}>Finish</Text>
+          <Text style={buttonText}>Thank You!</Text>
         </TouchableOpacity>
       </View>
     );
@@ -34,7 +38,7 @@ export default class ThankYouTwo extends React.Component {
 
 const styles = StyleSheet.create({
   buttonText: {
-    fontSize: 30,
+    fontSize: 60,
     color: 'white'
   },
   smallText: {

@@ -1,10 +1,18 @@
 import React from 'react';
 import axios from 'axios';
-import { StyleSheet, View, Button, Text, TouchableOpacity } from 'react-native';
-import { Camera, Permissions } from 'expo';
+import {
+  StyleSheet,
+  View,
+  Button,
+  Text,
+  TouchableOpacity,
+  TouchableHighlight
+} from 'react-native';
+import { Camera, Permissions, ImageManipulator } from 'expo';
 
 export default class Picture extends React.Component {
   state = {
+    image: {},
     hasCameraPermission: null,
     type: Camera.Constants.Type.front,
     email: this.props.navigation.getParam('email', 'not the email!'),
@@ -57,8 +65,30 @@ export default class Picture extends React.Component {
     this.setState({ hasCameraPermission: status === 'granted' });
   }
 
+  //Attempting to resize the image
+
+  // async resizePhoto() {
+  //   let URI = this.state.image.uri;
+  //   const manipResult = await ImageManipulator.manipulateAsync(
+  //     URI,
+  //     { resize: { height: 640 } },
+  //     { format: 'jpeg', base64: true }
+  //   );
+  //   console.log(manipResult);
+  //   this.setState({ image: manipResult });
+  // }
+
+  processImage = async imageURI => {
+    let processedImage = await ImageManipulator.manipulateAsync(
+      imageURI,
+      [{ crop: { originX: 0, originY: 0, width: 200, height: 200 } }],
+      { format: 'jpeg', base64: true }
+    );
+    this.setState({ image: processedImage });
+    console.log(processedImage.width);
+  };
+
   async snapPhoto() {
-    console.log('Button Pressed');
     if (this.camera) {
       console.log('Taking photo');
       const options = {
@@ -69,9 +99,18 @@ export default class Picture extends React.Component {
       };
       await this.camera.takePictureAsync(options).then(photo => {
         photo.exif.Orientation = 1;
+
+        this.setState({ image: photo });
+        console.log(this.state.image.uri);
+
+        //let imageURI = this.state.image.uri;
+
         this.props.navigation.navigate('picturePreview', {
           photo: photo
         });
+        //Navigating to the next and passing the image object as a prop,
+
+        //attempting to pass the image object from state previously photo param in navigation was sset to photo.
       });
     }
   }
@@ -83,7 +122,8 @@ export default class Picture extends React.Component {
       nextButton,
       buttonText,
       topHalf,
-      bottomHalf
+      bottomHalf,
+      myButton
     } = styles;
     const { hasCameraPermission } = this.state;
     if (hasCameraPermission === null) {
@@ -102,25 +142,12 @@ export default class Picture extends React.Component {
           >
             <View style={container}>
               <TouchableOpacity
-                style={{
-                  justifyContent: 'flex-end',
-                  alignItems: 'center'
-                }}
+                style={myButton}
                 onPress={this.snapPhoto.bind(this)}
-
-                // this.setState({
-                //   type:
-                //     this.state.type === Camera.Constants.Type.back
-                //       ? Camera.Constants.Type.front
-                //       : Camera.Constants.Type.back
-                // });
               >
                 <Text
                   style={{ fontSize: 18, marginBottom: 10, color: 'white' }}
-                >
-                  {' '}
-                  Snap Pic!{' '}
-                </Text>
+                />
               </TouchableOpacity>
             </View>
           </Camera>
@@ -135,7 +162,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'transparent',
     alignItems: 'center',
-    justifyContent: 'space-evenly'
+    justifyContent: 'flex-end'
   },
   textHeaderStyle: {
     fontSize: 50,
@@ -153,5 +180,15 @@ const styles = StyleSheet.create({
   },
   bottomHalf: {
     justifyContent: 'flex-start'
+  },
+  myButton: {
+    marginBottom: 30,
+    padding: 5,
+    height: 100,
+    width: 100, //The Width must be the same as the height
+    borderRadius: 200, //Then Make the Border Radius twice the size of width or Height
+    backgroundColor: 'white',
+    borderColor: '#8A2BE2',
+    borderWidth: 20
   }
 });

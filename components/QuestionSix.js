@@ -41,82 +41,84 @@ export default class QuestionSix extends React.Component {
         <View style={styles.description}>
           <Text style={styles.questionText}>Who should fund art?</Text>
         </View>
-        <TouchableHighlight
-          onPress={() =>
-            this.props.navigation.navigate('ThankYouOne', {
-              email: this.state.email,
-              zip: this.state.zip,
-              questionOneAnswer: this.state.questionOneAnswer,
-              questionTwoAnswer: this.state.questionTwoAnswer,
-              questionThreeAnswer: this.state.questionThreeAnswer,
-              questionFourAnswer: this.state.questionFourAnswer,
-              questionFiveAnswer: this.state.questionFiveAnswer,
-              questionSixAnswer: 'Government'
-            })
-          }
-          underlayColor='white'
-        >
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>A. GOVERNMENT</Text>
-          </View>
-        </TouchableHighlight>
-        <TouchableHighlight
-          onPress={() =>
-            this.props.navigation.navigate('takePicture', {
-              email: this.state.email,
-              zip: this.state.zip,
-              questionOneAnswer: this.state.questionOneAnswer,
-              questionTwoAnswer: this.state.questionTwoAnswer,
-              questionThreeAnswer: this.state.questionThreeAnswer,
-              questionFourAnswer: this.state.questionFourAnswer,
-              questionFiveAnswer: this.state.questionFiveAnswer,
-              questionSixAnswer: 'Corporate Groups'
-            })
-          }
-          underlayColor='white'
-        >
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>B. CORPORATE GROUPS</Text>
-          </View>
-        </TouchableHighlight>
-        <TouchableHighlight
-          onPress={() =>
-            this.props.navigation.navigate('takePicture', {
-              email: this.state.email,
-              zip: this.state.zip,
-              questionOneAnswer: this.state.questionOneAnswer,
-              questionTwoAnswer: this.state.questionTwoAnswer,
-              questionThreeAnswer: this.state.questionThreeAnswer,
-              questionFourAnswer: this.state.questionFourAnswer,
-              questionFiveAnswer: this.state.questionFiveAnswer,
-              questionSixAnswer: '50/50 Private/Public'
-            })
-          }
-          underlayColor='white'
-        >
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>C. 50/50 PRIVATE/PUBLIC</Text>
-          </View>
-        </TouchableHighlight>
-        <TouchableHighlight
-          onPress={() =>
-            this.props.navigation.navigate('takePicture', {
-              email: this.state.email,
-              zip: this.state.zip,
-              questionOneAnswer: this.state.questionOneAnswer,
-              questionTwoAnswer: this.state.questionTwoAnswer,
-              questionThreeAnswer: this.state.questionThreeAnswer,
-              questionFourAnswer: this.state.questionFourAnswer,
-              questionFiveAnswer: this.state.questionFiveAnswer,
-              questionSixAnswer: 'Consumers'
-            })
-          }
-          underlayColor='white'
-        >
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>D. CONSUMERS</Text>
-          </View>
-        </TouchableHighlight>
+        <View>
+          <TouchableHighlight
+            onPress={() =>
+              this.props.navigation.navigate('ThankYouOne', {
+                email: this.state.email,
+                zip: this.state.zip,
+                questionOneAnswer: this.state.questionOneAnswer,
+                questionTwoAnswer: this.state.questionTwoAnswer,
+                questionThreeAnswer: this.state.questionThreeAnswer,
+                questionFourAnswer: this.state.questionFourAnswer,
+                questionFiveAnswer: this.state.questionFiveAnswer,
+                questionSixAnswer: 'Government'
+              })
+            }
+            underlayColor='white'
+          >
+            <View style={styles.button}>
+              <Text style={styles.buttonText}>A. GOVERNMENT</Text>
+            </View>
+          </TouchableHighlight>
+          <TouchableHighlight
+            onPress={() =>
+              this.props.navigation.navigate('takePicture', {
+                email: this.state.email,
+                zip: this.state.zip,
+                questionOneAnswer: this.state.questionOneAnswer,
+                questionTwoAnswer: this.state.questionTwoAnswer,
+                questionThreeAnswer: this.state.questionThreeAnswer,
+                questionFourAnswer: this.state.questionFourAnswer,
+                questionFiveAnswer: this.state.questionFiveAnswer,
+                questionSixAnswer: 'Corporate Groups'
+              })
+            }
+            underlayColor='white'
+          >
+            <View style={styles.button}>
+              <Text style={styles.buttonText}>B. CORPORATE GROUPS</Text>
+            </View>
+          </TouchableHighlight>
+          <TouchableHighlight
+            onPress={() =>
+              this.props.navigation.navigate('takePicture', {
+                email: this.state.email,
+                zip: this.state.zip,
+                questionOneAnswer: this.state.questionOneAnswer,
+                questionTwoAnswer: this.state.questionTwoAnswer,
+                questionThreeAnswer: this.state.questionThreeAnswer,
+                questionFourAnswer: this.state.questionFourAnswer,
+                questionFiveAnswer: this.state.questionFiveAnswer,
+                questionSixAnswer: '50/50 Private/Public'
+              })
+            }
+            underlayColor='white'
+          >
+            <View style={styles.button}>
+              <Text style={styles.buttonText}>C. 50/50 PRIVATE/PUBLIC</Text>
+            </View>
+          </TouchableHighlight>
+          <TouchableHighlight
+            onPress={() =>
+              this.props.navigation.navigate('takePicture', {
+                email: this.state.email,
+                zip: this.state.zip,
+                questionOneAnswer: this.state.questionOneAnswer,
+                questionTwoAnswer: this.state.questionTwoAnswer,
+                questionThreeAnswer: this.state.questionThreeAnswer,
+                questionFourAnswer: this.state.questionFourAnswer,
+                questionFiveAnswer: this.state.questionFiveAnswer,
+                questionSixAnswer: 'Consumers'
+              })
+            }
+            underlayColor='white'
+          >
+            <View style={styles.button}>
+              <Text style={styles.buttonText}>D. CONSUMERS</Text>
+            </View>
+          </TouchableHighlight>
+        </View>
       </View>
     );
   }
@@ -127,23 +129,28 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#8A2BE2',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'space-evenly',
+    textAlign: 'center'
   },
   button: {
     marginBottom: 30,
-    width: 260,
+    width: 520,
     alignItems: 'center',
     backgroundColor: 'white'
   },
   buttonText: {
     padding: 20,
-    color: 'black'
+    color: 'black',
+    fontSize: 30
   },
   questionText: {
-    fontSize: 25,
-    color: 'white'
+    fontSize: 60,
+    color: 'white',
+    textAlign: 'center'
   },
   description: {
-    margin: 20
+    margin: 20,
+    height: 150,
+    marginTop: 90
   }
 });

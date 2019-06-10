@@ -3,10 +3,12 @@ import {
   StyleSheet,
   Text,
   View,
-  Button,
+  Image,
   Alert,
   TextInput,
-  TouchableOpacity
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+  Keyboard
 } from 'react-native';
 import ReactNavigation from 'react-navigation';
 
@@ -35,39 +37,56 @@ export default class EmailZip extends React.Component {
   };
 
   render() {
-    const { container, smallText, input, buttonText } = styles;
+    const {
+      container,
+      smallText,
+      input,
+      buttonText,
+      topHalf,
+      logo,
+      bottomHalf
+    } = styles;
     return (
-      <View style={container}>
-        <Text style={smallText}>Email Address</Text>
-        <TextInput
-          style={input}
-          keyboardType='email-address'
-          placeholder='Email'
-          onChangeText={this.handleEmail}
-          value={this.state.email}
-          color='white'
-        />
-        <Text style={smallText}>Zip Code</Text>
-        <TextInput
-          style={input}
-          keyboardType='numeric'
-          placeholder='Zip Code'
-          onChangeText={this.handleZip}
-          value={this.state.zip}
-          color='white'
-          maxLength={5}
-        />
-        <TouchableOpacity onPress={() => this.submitInfo()}>
-          <Text style={buttonText}>Next</Text>
-        </TouchableOpacity>
-      </View>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <View style={container}>
+          <View style={topHalf}>
+            <Text style={buttonText}>Tell us a little bit about you...</Text>
+          </View>
+          <TextInput
+            style={input}
+            keyboardType='email-address'
+            placeholder='Email'
+            onChangeText={this.handleEmail}
+            value={this.state.email}
+            color='black'
+            fontSize='30'
+          />
+
+          <TextInput
+            style={input}
+            keyboardType='numeric'
+            placeholder='Zip Code'
+            onChangeText={this.handleZip}
+            value={this.state.zip}
+            color='black'
+            maxLength={5}
+            fontSize='30'
+          />
+
+          <View style={bottomHalf}>
+            <TouchableOpacity onPress={() => this.submitInfo()}>
+              <Text style={buttonText}>Next</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </TouchableWithoutFeedback>
     );
   }
 }
 
 const styles = StyleSheet.create({
   buttonText: {
-    fontSize: 30,
+    fontSize: 60,
     color: 'white'
   },
   smallText: {
@@ -78,12 +97,28 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#8A2BE2',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    textAlign: 'center'
   },
   input: {
     margin: 15,
-    height: 40,
-    width: 120,
-    borderBottomColor: '#7a42f4'
+    height: 80,
+    width: 520,
+    borderBottomColor: '#7a42f4',
+    backgroundColor: 'white',
+    textAlign: 'center',
+    marginTop: 20,
+    marginBottom: 20
+  },
+  topHalf: {
+    justifyContent: 'flex-start',
+    marginBottom: 100
+  },
+  bottomHalf: {
+    marginTop: 100
+  },
+  logo: {
+    width: 175,
+    height: 35
   }
 });

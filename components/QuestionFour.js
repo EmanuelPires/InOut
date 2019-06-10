@@ -35,74 +35,76 @@ export default class QuestionFour extends React.Component {
             When would you like to see art?
           </Text>
         </View>
-        <TouchableHighlight
-          onPress={() =>
-            this.props.navigation.navigate('QuestionFive', {
-              email: this.state.email,
-              zip: this.state.zip,
-              questionOneAnswer: this.state.questionOneAnswer,
-              questionTwoAnswer: this.state.questionTwoAnswer,
-              questionThreeAnswer: this.state.questionThreeAnswer,
-              questionFourAnswer: 'Any Chance I Get'
-            })
-          }
-          underlayColor='white'
-        >
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>A. ANY CHANCE I GET</Text>
-          </View>
-        </TouchableHighlight>
-        <TouchableHighlight
-          onPress={() =>
-            this.props.navigation.navigate('QuestionFive', {
-              email: this.state.email,
-              zip: this.state.zip,
-              questionOneAnswer: this.state.questionOneAnswer,
-              questionTwoAnswer: this.state.questionTwoAnswer,
-              questionThreeAnswer: this.state.questionThreeAnswer,
-              questionFourAnswer: 'On Weekends'
-            })
-          }
-          underlayColor='white'
-        >
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>B. ON WEEKENDS</Text>
-          </View>
-        </TouchableHighlight>
-        <TouchableHighlight
-          onPress={() =>
-            this.props.navigation.navigate('QuestionFive', {
-              email: this.state.email,
-              zip: this.state.zip,
-              questionOneAnswer: this.state.questionOneAnswer,
-              questionTwoAnswer: this.state.questionTwoAnswer,
-              questionThreeAnswer: this.state.questionThreeAnswer,
-              questionFourAnswer: 'When I least Expect'
-            })
-          }
-          underlayColor='white'
-        >
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>C. WHEN I LEAST EXPECT</Text>
-          </View>
-        </TouchableHighlight>
-        <TouchableHighlight
-          onPress={() =>
-            this.props.navigation.navigate('QuestionFive', {
-              email: this.state.email,
-              zip: this.state.zip,
-              questionOneAnswer: this.state.questionOneAnswer,
-              questionTwoAnswer: this.state.questionTwoAnswer,
-              questionThreeAnswer: this.state.questionThreeAnswer,
-              questionFourAnswer: 'At Night'
-            })
-          }
-          underlayColor='white'
-        >
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>D. AT NIGHT</Text>
-          </View>
-        </TouchableHighlight>
+        <View>
+          <TouchableHighlight
+            onPress={() =>
+              this.props.navigation.navigate('QuestionFive', {
+                email: this.state.email,
+                zip: this.state.zip,
+                questionOneAnswer: this.state.questionOneAnswer,
+                questionTwoAnswer: this.state.questionTwoAnswer,
+                questionThreeAnswer: this.state.questionThreeAnswer,
+                questionFourAnswer: 'Any Chance I Get'
+              })
+            }
+            underlayColor='white'
+          >
+            <View style={styles.button}>
+              <Text style={styles.buttonText}>A. ANY CHANCE I GET</Text>
+            </View>
+          </TouchableHighlight>
+          <TouchableHighlight
+            onPress={() =>
+              this.props.navigation.navigate('QuestionFive', {
+                email: this.state.email,
+                zip: this.state.zip,
+                questionOneAnswer: this.state.questionOneAnswer,
+                questionTwoAnswer: this.state.questionTwoAnswer,
+                questionThreeAnswer: this.state.questionThreeAnswer,
+                questionFourAnswer: 'On Weekends'
+              })
+            }
+            underlayColor='white'
+          >
+            <View style={styles.button}>
+              <Text style={styles.buttonText}>B. ON WEEKENDS</Text>
+            </View>
+          </TouchableHighlight>
+          <TouchableHighlight
+            onPress={() =>
+              this.props.navigation.navigate('QuestionFive', {
+                email: this.state.email,
+                zip: this.state.zip,
+                questionOneAnswer: this.state.questionOneAnswer,
+                questionTwoAnswer: this.state.questionTwoAnswer,
+                questionThreeAnswer: this.state.questionThreeAnswer,
+                questionFourAnswer: 'When I least Expect'
+              })
+            }
+            underlayColor='white'
+          >
+            <View style={styles.button}>
+              <Text style={styles.buttonText}>C. WHEN I LEAST EXPECT</Text>
+            </View>
+          </TouchableHighlight>
+          <TouchableHighlight
+            onPress={() =>
+              this.props.navigation.navigate('QuestionFive', {
+                email: this.state.email,
+                zip: this.state.zip,
+                questionOneAnswer: this.state.questionOneAnswer,
+                questionTwoAnswer: this.state.questionTwoAnswer,
+                questionThreeAnswer: this.state.questionThreeAnswer,
+                questionFourAnswer: 'At Night'
+              })
+            }
+            underlayColor='white'
+          >
+            <View style={styles.button}>
+              <Text style={styles.buttonText}>D. AT NIGHT</Text>
+            </View>
+          </TouchableHighlight>
+        </View>
       </View>
     );
   }
@@ -113,23 +115,28 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#8A2BE2',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'space-evenly',
+    textAlign: 'center'
   },
   button: {
     marginBottom: 30,
-    width: 260,
+    width: 520,
     alignItems: 'center',
     backgroundColor: 'white'
   },
   buttonText: {
     padding: 20,
-    color: 'black'
+    color: 'black',
+    fontSize: 30
   },
   questionText: {
-    fontSize: 25,
-    color: 'white'
+    fontSize: 60,
+    color: 'white',
+    textAlign: 'center'
   },
   description: {
-    margin: 20
+    margin: 20,
+    height: 150,
+    marginTop: 90
   }
 });

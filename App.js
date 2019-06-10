@@ -14,6 +14,7 @@ import QuestionSix from './components/QuestionSix';
 import takePicture from './components/takePicture';
 import picturePreview from './components/picturePreview';
 import ThankYouOne from './components/ThankYouOne';
+import ThankYouTwo from './components/ThankYouTwo';
 
 const RootStack = createStackNavigator(
   {
@@ -51,14 +52,19 @@ const RootStack = createStackNavigator(
       screen: ThankYouOne
     },
     takePicture: {
-      screen: takePicture
+      screen: takePicture,
+      headerLeft: null
     },
     picturePreview: {
       screen: picturePreview
+    },
+    ThankYouTwo: {
+      screen: ThankYouTwo,
+      headerLeft: null
     }
   },
   {
-    initialRouteName: 'takePicture'
+    initialRouteName: 'Home'
   }
 );
 
