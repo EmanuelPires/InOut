@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Image, Text, TouchableOpacity } from 'react-native';
+import { LinearGradient } from 'expo';
 
 export default class Home extends React.Component {
   render() {
@@ -13,7 +14,7 @@ export default class Home extends React.Component {
       logo
     } = styles;
     return (
-      <View style={container}>
+      <LinearGradient colors={['#9c00e4', '#ff3803']} style={container}>
         <View style={topHalf}>
           <Image source={require('../assets/INOUT_logo-14.png')} style={logo} />
         </View>
@@ -25,7 +26,7 @@ export default class Home extends React.Component {
             <Text style={buttonText}>Start</Text>
           </TouchableOpacity>
         </View>
-      </View>
+      </LinearGradient>
     );
   }
 }
