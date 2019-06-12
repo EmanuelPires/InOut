@@ -7,7 +7,7 @@ import {
   ImageBackground
 } from 'react-native';
 import ReactNavigation from 'react-navigation';
-import { ImageManipulator } from 'expo';
+import { ImageManipulator, LinearGradient } from 'expo';
 
 import axios from 'axios';
 export default class picturePreview extends React.Component {
@@ -18,16 +18,6 @@ export default class picturePreview extends React.Component {
     console.log('picture Previouw Mounted');
     let photoObject = this.props.navigation.getParam('photo', 'NOT THE URI!');
     this.setState({ photoURI: photoObject });
-
-    // console.log(
-    //   'This is the photo base64 string: ' + JSON.stringify(photoObject.base64)
-    // );
-    // console.log('*******************************************');
-    // console.log('This is the photo base64 object: ' + photoObject.base64);
-
-    //this.sendToBackEnd();
-
-    // this.resizePhoto();
   }
 
   tweet() {
@@ -47,14 +37,7 @@ export default class picturePreview extends React.Component {
   };
 
   render() {
-    const {
-      container,
-      description,
-      imageContainer,
-      buttonText,
-      button,
-      image
-    } = styles;
+    const { container, buttonSection, button, image } = styles;
     return (
       <View style={container}>
         <ImageBackground
@@ -64,15 +47,20 @@ export default class picturePreview extends React.Component {
           style={image}
           resizeMode='contain'
         >
-          <TouchableHighlight style={button} onPress={() => this.tweet()}>
-            <Text style={styles.buttonText}>Submit</Text>
-          </TouchableHighlight>
-          <TouchableHighlight
-            style={button}
-            onPress={() => this.props.navigation.navigate('takePicture')}
-          >
-            <Text style={styles.buttonText}>Retake</Text>
-          </TouchableHighlight>
+          <View style={buttonSection}>
+            <TouchableHighlight
+              onPress={() => this.props.navigation.navigate('takePicture')}
+            >
+              <LinearGradient colors={['#9c00e4', '#ff3803']} style={button}>
+                <Text style={styles.buttonText}>Retake</Text>
+              </LinearGradient>
+            </TouchableHighlight>
+            <TouchableHighlight onPress={() => this.tweet()}>
+              <LinearGradient colors={['#9c00e4', '#ff3803']} style={button}>
+                <Text style={styles.buttonText}>Submit</Text>
+              </LinearGradient>
+            </TouchableHighlight>
+          </View>
         </ImageBackground>
       </View>
     );
@@ -82,7 +70,7 @@ export default class picturePreview extends React.Component {
 const styles = StyleSheet.create({
   buttonText: {
     fontSize: 30,
-    color: '#8A2BE2',
+    color: 'white',
     padding: 20
   },
   container: {
@@ -106,6 +94,13 @@ const styles = StyleSheet.create({
     marginBottom: 30,
     width: 260,
     alignItems: 'center',
-    backgroundColor: 'white'
+    backgroundColor: 'white',
+    marginLeft: 20,
+    marginRight: 20
+  },
+  buttonSection: {
+    marginBottom: 100,
+
+    flexDirection: 'row'
   }
 });

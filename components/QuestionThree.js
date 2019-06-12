@@ -7,6 +7,7 @@ import {
   TouchableHighlight
 } from 'react-native';
 import ReactNavigation from 'react-navigation';
+import { LinearGradient } from 'expo';
 
 export default class QuestionThree extends React.Component {
   state = {
@@ -26,13 +27,13 @@ export default class QuestionThree extends React.Component {
     const { navigation } = this.props;
 
     return (
-      <View style={styles.container}>
+      <LinearGradient colors={['#9c00e4', '#ff3803']} style={styles.container}>
         <View style={styles.description}>
           <Text style={styles.questionText}>
             What art activities do you enjoy?
           </Text>
         </View>
-        <View>
+        <View style={styles.questionGroup}>
           <TouchableHighlight
             onPress={() =>
               this.props.navigation.navigate('QuestionFour', {
@@ -98,7 +99,7 @@ export default class QuestionThree extends React.Component {
             </View>
           </TouchableHighlight>
         </View>
-      </View>
+      </LinearGradient>
     );
   }
 }
@@ -108,18 +109,17 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#8A2BE2',
     alignItems: 'center',
-    justifyContent: 'space-evenly',
-    textAlign: 'center'
+    justifyContent: 'space-evenly'
   },
   button: {
     marginBottom: 30,
     width: 520,
     alignItems: 'center',
-    backgroundColor: 'white'
+    backgroundColor: 'transparent'
   },
   buttonText: {
     padding: 20,
-    color: 'black',
+    color: 'white',
     fontSize: 30
   },
   questionText: {
@@ -132,5 +132,8 @@ const styles = StyleSheet.create({
     height: 150,
     marginTop: 90,
     textAlign: 'center'
+  },
+  questionGroup: {
+    marginBottom: 100
   }
 });

@@ -1,11 +1,19 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
+import { LinearGradient } from 'expo';
 
 export default class Consent extends React.Component {
   render() {
-    const { container, description, smallText, buttonText, logo } = styles;
+    const {
+      container,
+      description,
+      smallText,
+      buttonText,
+      logo,
+      next
+    } = styles;
     return (
-      <View style={container}>
+      <LinearGradient colors={['#9c00e4', '#ff3803']} style={container}>
         <Image source={require('../assets/INOUT_logo-14.png')} style={logo} />
         <View style={description}>
           <Text style={smallText} />
@@ -31,10 +39,11 @@ export default class Consent extends React.Component {
         <TouchableOpacity
           title='I accept the terms.'
           onPress={() => this.props.navigation.navigate('EmailZip')}
+          style={next}
         >
           <Text style={buttonText}>I accept terms and conditions</Text>
         </TouchableOpacity>
-      </View>
+      </LinearGradient>
     );
   }
 }
@@ -63,5 +72,9 @@ const styles = StyleSheet.create({
   logo: {
     width: 175,
     height: 35
+  },
+  next: {
+    borderBottomWidth: 1,
+    borderBottomColor: 'white'
   }
 });

@@ -43,7 +43,9 @@ const styles = StyleSheet.create({
     color: 'white'
   },
   nextButton: {
-    marginTop: 20
+    marginTop: 20,
+    borderBottomWidth: 1,
+    borderBottomColor: 'white'
   },
   buttonText: {
     fontSize: 30,

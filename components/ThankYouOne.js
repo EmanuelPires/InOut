@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   sm
 } from 'react-native';
+import { LinearGradient } from 'expo';
 import axios from 'axios';
 
 export default class ThankYouOne extends React.Component {
@@ -65,16 +66,13 @@ export default class ThankYouOne extends React.Component {
       description
     } = styles;
     return (
-      <View
-        style={container}
-        onPress={() => this.props.navigation.navigate('takePicture')}
-      >
+      <LinearGradient colors={['#9c00e4', '#ff3803']} style={styles.container}>
         <TouchableOpacity
           onPress={() => this.props.navigation.navigate('takePicture')}
         >
           <Text style={buttonText}>Now take a selfie!</Text>
         </TouchableOpacity>
-      </View>
+      </LinearGradient>
     );
   }
 }

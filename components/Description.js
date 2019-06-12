@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   Image
 } from 'react-native';
+import { LinearGradient } from 'expo';
 
 export default class Description extends React.Component {
   render() {
@@ -16,11 +17,11 @@ export default class Description extends React.Component {
       buttonText,
       smallText,
       description,
-      largeText,
+      next,
       logo
     } = styles;
     return (
-      <View style={container}>
+      <LinearGradient colors={['#9c00e4', '#ff3803']} style={container}>
         <Image source={require('../assets/INOUT_logo-14.png')} style={logo} />
         <View style={description}>
           <Text style={smallText}>
@@ -38,10 +39,11 @@ export default class Description extends React.Component {
         </View>
         <TouchableOpacity
           onPress={() => this.props.navigation.navigate('Consent')}
+          style={next}
         >
           <Text style={buttonText}>Next</Text>
         </TouchableOpacity>
-      </View>
+      </LinearGradient>
     );
   }
 }
@@ -78,5 +80,9 @@ const styles = StyleSheet.create({
   logo: {
     width: 350,
     height: 70
+  },
+  next: {
+    borderBottomWidth: 1,
+    borderBottomColor: 'white'
   }
 });

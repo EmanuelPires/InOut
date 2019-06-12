@@ -1,21 +1,16 @@
 import React from 'react';
 import axios from 'axios';
 import { StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native';
+import { LinearGradient } from 'expo';
 
 export default class ThankYouTwo extends React.Component {
   componentDidMount() {
-    // let photoObject = this.props.navigation.getParam('photo', 'NOT THE URI!');
-    // return (axios
-    //   .post(
-    //     'https://agile-hollows-10057.herokuapp.com/feedback/tweet',
-    //     photoObject
-    //   )
-    //   .then(function() {
-    //     console.log('tweeted!');
-    //   }).catch = err => {
-    //   console.log('Error: ' + err);
-    // });
+    setTimeout(this.end, 3000);
   }
+
+  end = () => {
+    this.props.navigation.navigate('Home');
+  };
   render() {
     const {
       container,
@@ -25,13 +20,13 @@ export default class ThankYouTwo extends React.Component {
       description
     } = styles;
     return (
-      <View style={container}>
+      <LinearGradient colors={['#9c00e4', '#ff3803']} style={container}>
         <TouchableOpacity
           onPress={() => this.props.navigation.navigate('Home')}
         >
           <Text style={buttonText}>Thank You!</Text>
         </TouchableOpacity>
-      </View>
+      </LinearGradient>
     );
   }
 }

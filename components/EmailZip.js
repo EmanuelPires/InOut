@@ -11,6 +11,7 @@ import {
   Keyboard
 } from 'react-native';
 import ReactNavigation from 'react-navigation';
+import { LinearGradient } from 'expo';
 
 export default class EmailZip extends React.Component {
   state = {
@@ -44,41 +45,48 @@ export default class EmailZip extends React.Component {
       buttonText,
       topHalf,
       logo,
-      bottomHalf
+      bottomHalf,
+      largeText,
+      next
     } = styles;
     return (
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View style={container}>
+        <LinearGradient
+          colors={['#9c00e4', '#ff3803']}
+          style={styles.container}
+        >
           <View style={topHalf}>
-            <Text style={buttonText}>Tell us a little bit about you...</Text>
+            <Text style={largeText}>Tell us a little bit about you...</Text>
           </View>
           <TextInput
             style={input}
+            placeholderTextColor='white'
             keyboardType='email-address'
-            placeholder='Email'
+            placeholder='Email (optional)'
             onChangeText={this.handleEmail}
             value={this.state.email}
-            color='black'
+            color='white'
             fontSize='30'
           />
 
           <TextInput
             style={input}
+            placeholderTextColor='white'
             keyboardType='numeric'
-            placeholder='Zip Code'
+            placeholder='Zip Code (optional)'
             onChangeText={this.handleZip}
             value={this.state.zip}
-            color='black'
+            color='white'
             maxLength={5}
             fontSize='30'
           />
 
           <View style={bottomHalf}>
-            <TouchableOpacity onPress={() => this.submitInfo()}>
+            <TouchableOpacity onPress={() => this.submitInfo()} style={next}>
               <Text style={buttonText}>Next</Text>
             </TouchableOpacity>
           </View>
-        </View>
+        </LinearGradient>
       </TouchableWithoutFeedback>
     );
   }
@@ -86,28 +94,28 @@ export default class EmailZip extends React.Component {
 
 const styles = StyleSheet.create({
   buttonText: {
-    fontSize: 60,
+    fontSize: 30,
     color: 'white'
   },
-  smallText: {
-    fontSize: 15,
+  largeText: {
+    fontSize: 60,
     color: 'white'
   },
   container: {
     flex: 1,
     backgroundColor: '#8A2BE2',
     alignItems: 'center',
-    justifyContent: 'center',
-    textAlign: 'center'
+    justifyContent: 'center'
   },
   input: {
     margin: 15,
     height: 80,
     width: 520,
-    borderBottomColor: '#7a42f4',
-    backgroundColor: 'white',
+
+    borderBottomWidth: 1,
+    borderBottomColor: 'white',
     textAlign: 'center',
-    marginTop: 20,
+    marginTop: 30,
     marginBottom: 20
   },
   topHalf: {
@@ -120,5 +128,9 @@ const styles = StyleSheet.create({
   logo: {
     width: 175,
     height: 35
+  },
+  next: {
+    borderBottomWidth: 1,
+    borderBottomColor: 'white'
   }
 });
