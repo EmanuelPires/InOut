@@ -25,7 +25,7 @@ Here you can see that the app is console logging the object it creates as the us
 After the data is posted to Mongo the app will open the IOS mobile device's camera and allow the user to take a selfie. 
 
 
-![IMG_0030](https://user-images.githubusercontent.com/43054091/59397235-d6641600-8d59-11e9-8f2a-c1d79688be15.jpg)
+![IMG_0030](https://user-images.githubusercontent.com/43054091/59397524-edefce80-8d5a-11e9-8d7c-b670b4d20f70.jpg)
 
 
 From there the user is directed to a preview screen.
