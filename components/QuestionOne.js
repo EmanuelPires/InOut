@@ -7,6 +7,7 @@ import {
   TouchableHighlight
 } from 'react-native';
 import ReactNavigation from 'react-navigation';
+import { LinearGradient } from 'expo';
 
 export default class QuestionOne extends React.Component {
   state = {
@@ -19,67 +20,69 @@ export default class QuestionOne extends React.Component {
     console.log(this.state.zip);
 
     return (
-      <View style={styles.container}>
+      <LinearGradient colors={['#9c00e4', '#ff3803']} style={styles.container}>
         <View style={styles.description}>
           <Text style={styles.questionText}>Where is home to you?</Text>
         </View>
-        <TouchableHighlight
-          onPress={() =>
-            this.props.navigation.navigate('QuestionTwo', {
-              email: this.state.email,
-              zip: this.state.zip,
-              questionOneAnswer: 'Fairfax County'
-            })
-          }
-          underlayColor='white'
-        >
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>A. FAIRFAX COUNTY</Text>
-          </View>
-        </TouchableHighlight>
-        <TouchableHighlight
-          onPress={() =>
-            this.props.navigation.navigate('QuestionTwo', {
-              email: this.state.email,
-              zip: this.state.zip,
-              questionOneAnswer: 'Family & Friends'
-            })
-          }
-          underlayColor='white'
-        >
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>B. FAMILY AND FRIENDS</Text>
-          </View>
-        </TouchableHighlight>
-        <TouchableHighlight
-          onPress={() =>
-            this.props.navigation.navigate('QuestionTwo', {
-              email: this.state.email,
-              zip: this.state.zip,
-              questionOneAnswer: 'Where I Grew Up'
-            })
-          }
-          underlayColor='white'
-        >
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>C. WHERE I GREW UP</Text>
-          </View>
-        </TouchableHighlight>
-        <TouchableHighlight
-          onPress={() =>
-            this.props.navigation.navigate('QuestionTwo', {
-              email: this.state.email,
-              zip: this.state.zip,
-              questionOneAnswer: 'Where I Am'
-            })
-          }
-          underlayColor='white'
-        >
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>D. WHERE I AM</Text>
-          </View>
-        </TouchableHighlight>
-      </View>
+        <View style={styles.questionGroup}>
+          <TouchableHighlight
+            onPress={() =>
+              this.props.navigation.navigate('QuestionTwo', {
+                email: this.state.email,
+                zip: this.state.zip,
+                questionOneAnswer: 'Fairfax County'
+              })
+            }
+            underlayColor='white'
+          >
+            <View style={styles.button}>
+              <Text style={styles.buttonText}>A. FAIRFAX COUNTY</Text>
+            </View>
+          </TouchableHighlight>
+          <TouchableHighlight
+            onPress={() =>
+              this.props.navigation.navigate('QuestionTwo', {
+                email: this.state.email,
+                zip: this.state.zip,
+                questionOneAnswer: 'Family & Friends'
+              })
+            }
+            underlayColor='white'
+          >
+            <View style={styles.button}>
+              <Text style={styles.buttonText}>B. FAMILY AND FRIENDS</Text>
+            </View>
+          </TouchableHighlight>
+          <TouchableHighlight
+            onPress={() =>
+              this.props.navigation.navigate('QuestionTwo', {
+                email: this.state.email,
+                zip: this.state.zip,
+                questionOneAnswer: 'Where I Grew Up'
+              })
+            }
+            underlayColor='white'
+          >
+            <View style={styles.button}>
+              <Text style={styles.buttonText}>C. WHERE I GREW UP</Text>
+            </View>
+          </TouchableHighlight>
+          <TouchableHighlight
+            onPress={() =>
+              this.props.navigation.navigate('QuestionTwo', {
+                email: this.state.email,
+                zip: this.state.zip,
+                questionOneAnswer: 'Where I Am'
+              })
+            }
+            underlayColor='white'
+          >
+            <View style={styles.button}>
+              <Text style={styles.buttonText}>D. WHERE I AM</Text>
+            </View>
+          </TouchableHighlight>
+        </View>
+      </LinearGradient>
     );
   }
 }
@@ -89,23 +92,37 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#8A2BE2',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'space-evenly'
   },
   button: {
     marginBottom: 30,
-    width: 260,
+    width: 520,
     alignItems: 'center',
-    backgroundColor: 'white'
+    backgroundColor: 'transparent'
   },
   buttonText: {
     padding: 20,
-    color: 'black'
+    color: 'white',
+    fontSize: 30
   },
   questionText: {
-    fontSize: 25,
-    color: 'white'
+    fontSize: 60,
+    color: 'white',
+    textAlign: 'center'
   },
   description: {
-    margin: 20
+    height: 150,
+    textAlign: 'center',
+    marginTop: 90
+  },
+  topHalf: {
+    justifyContent: 'flex-start',
+    marginBottom: 500
+  },
+  questionContainer: {
+    justifyContent: 'center'
+  },
+  questionGroup: {
+    marginBottom: 100
   }
 });

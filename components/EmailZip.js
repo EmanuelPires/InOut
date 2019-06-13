@@ -3,12 +3,15 @@ import {
   StyleSheet,
   Text,
   View,
-  Button,
+  Image,
   Alert,
   TextInput,
-  TouchableOpacity
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+  Keyboard
 } from 'react-native';
 import ReactNavigation from 'react-navigation';
+import { LinearGradient } from 'expo';
 
 export default class EmailZip extends React.Component {
   state = {
@@ -35,32 +38,56 @@ export default class EmailZip extends React.Component {
   };
 
   render() {
-    const { container, smallText, input, buttonText } = styles;
+    const {
+      container,
+      smallText,
+      input,
+      buttonText,
+      topHalf,
+      logo,
+      bottomHalf,
+      largeText,
+      next
+    } = styles;
     return (
-      <View style={container}>
-        <Text style={smallText}>Email Address</Text>
-        <TextInput
-          style={input}
-          keyboardType='email-address'
-          placeholder='Email'
-          onChangeText={this.handleEmail}
-          value={this.state.email}
-          color='white'
-        />
-        <Text style={smallText}>Zip Code</Text>
-        <TextInput
-          style={input}
-          keyboardType='numeric'
-          placeholder='Zip Code'
-          onChangeText={this.handleZip}
-          value={this.state.zip}
-          color='white'
-          maxLength={5}
-        />
-        <TouchableOpacity onPress={() => this.submitInfo()}>
-          <Text style={buttonText}>Next</Text>
-        </TouchableOpacity>
-      </View>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <LinearGradient
+          colors={['#9c00e4', '#ff3803']}
+          style={styles.container}
+        >
+          <View style={topHalf}>
+            <Text style={largeText}>Tell us a little bit about you...</Text>
+          </View>
+          <TextInput
+            style={input}
+            placeholderTextColor='white'
+            keyboardType='email-address'
+            placeholder='Email (optional)'
+            onChangeText={this.handleEmail}
+            value={this.state.email}
+            color='white'
+            fontSize='30'
+          />
+
+          <TextInput
+            style={input}
+            placeholderTextColor='white'
+            keyboardType='numeric'
+            placeholder='Zip Code (optional)'
+            onChangeText={this.handleZip}
+            value={this.state.zip}
+            color='white'
+            maxLength={5}
+            fontSize='30'
+          />
+
+          <View style={bottomHalf}>
+            <TouchableOpacity onPress={() => this.submitInfo()} style={next}>
+              <Text style={buttonText}>Next</Text>
+            </TouchableOpacity>
+          </View>
+        </LinearGradient>
+      </TouchableWithoutFeedback>
     );
   }
 }
@@ -70,8 +97,8 @@ const styles = StyleSheet.create({
     fontSize: 30,
     color: 'white'
   },
-  smallText: {
-    fontSize: 15,
+  largeText: {
+    fontSize: 60,
     color: 'white'
   },
   container: {
@@ -82,8 +109,28 @@ const styles = StyleSheet.create({
   },
   input: {
     margin: 15,
-    height: 40,
-    width: 120,
-    borderBottomColor: '#7a42f4'
+    height: 80,
+    width: 520,
+
+    borderBottomWidth: 1,
+    borderBottomColor: 'white',
+    textAlign: 'center',
+    marginTop: 30,
+    marginBottom: 20
+  },
+  topHalf: {
+    justifyContent: 'flex-start',
+    marginBottom: 100
+  },
+  bottomHalf: {
+    marginTop: 100
+  },
+  logo: {
+    width: 175,
+    height: 35
+  },
+  next: {
+    borderBottomWidth: 1,
+    borderBottomColor: 'white'
   }
 });

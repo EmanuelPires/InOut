@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, View, Button, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Image, Text, TouchableOpacity } from 'react-native';
+import { LinearGradient } from 'expo';
 
 export default class Home extends React.Component {
   render() {
@@ -9,12 +10,13 @@ export default class Home extends React.Component {
       nextButton,
       buttonText,
       topHalf,
-      bottomHalf
+      bottomHalf,
+      logo
     } = styles;
     return (
-      <View style={container}>
+      <LinearGradient colors={['#9c00e4', '#ff3803']} style={container}>
         <View style={topHalf}>
-          <Text style={textHeaderStyle}>In Out</Text>
+          <Image source={require('../assets/INOUT_logo-14.png')} style={logo} />
         </View>
         <View style={bottomHalf}>
           <TouchableOpacity
@@ -24,7 +26,7 @@ export default class Home extends React.Component {
             <Text style={buttonText}>Start</Text>
           </TouchableOpacity>
         </View>
-      </View>
+      </LinearGradient>
     );
   }
 }
@@ -41,7 +43,9 @@ const styles = StyleSheet.create({
     color: 'white'
   },
   nextButton: {
-    marginTop: 20
+    marginTop: 20,
+    borderBottomWidth: 1,
+    borderBottomColor: 'white'
   },
   buttonText: {
     fontSize: 30,
@@ -52,5 +56,9 @@ const styles = StyleSheet.create({
   },
   bottomHalf: {
     justifyContent: 'flex-start'
+  },
+  logo: {
+    width: 350,
+    height: 70
   }
 });
