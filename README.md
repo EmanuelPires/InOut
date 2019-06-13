@@ -24,9 +24,19 @@ Here you can see that the app is console logging the object it creates as the us
 
 After the data is posted to Mongo the app will open the IOS mobile device's camera and allow the user to take a selfie. 
 
-From there the user is directed to a preview screen and if the user is happy with their picture the app will do a post to our backend. The back end hosted on Heroku will hit the Twitter API and create the tweet using the image and the hashtag #INOUTSPRINGFIELD.
+
+![IMG_0030](https://user-images.githubusercontent.com/43054091/59397235-d6641600-8d59-11e9-8f2a-c1d79688be15.jpg)
+
+
+From there the user is directed to a preview screen.
+
+![IMG_0034](https://user-images.githubusercontent.com/43054091/59397267-f5fb3e80-8d59-11e9-93b6-2457a1871aad.jpg)
+
+If the user is happy with their picture the app will do a post to our backend. The back end hosted on Heroku will hit the Twitter API and create the tweet using the image and the hashtag #INOUTSPRINGFIELD.
+
+![Screen Shot 2019-06-12 at 9 16 38 PM](https://user-images.githubusercontent.com/43054091/59397313-2a6efa80-8d5a-11e9-89f0-bb06fdb5a339.png)
 
 You can see the app working at locations in Springfield July 13 through August 23.
 
-You can learn more about the installation here https://www.inoutexperience.com/
+Learn more about this project here https://www.inoutexperience.com/
 
