@@ -40,6 +40,7 @@ export default class ThankYouOne extends React.Component {
     )
   };
   componentDidMount() {
+    setTimeout(this.end, 2000);
     const feedback = {
       email: this.state.email,
       Answer1: this.state.questionOneAnswer,
@@ -56,6 +57,10 @@ export default class ThankYouOne extends React.Component {
       feedback
     );
   }
+
+  end = () => {
+    this.props.navigation.navigate('takePicture');
+  };
 
   render() {
     const {

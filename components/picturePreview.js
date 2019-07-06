@@ -20,6 +20,10 @@ export default class picturePreview extends React.Component {
     this.setState({ photoURI: photoObject });
   }
 
+  start = () => {
+    this.props.navigation.navigate('Home');
+  };
+
   tweet() {
     let photoObject = this.props.navigation.getParam('photo', 'NOT THE URI!');
     console.log('Photo Object from picture Preview:' + photoObject.uri);

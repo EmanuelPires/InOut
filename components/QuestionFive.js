@@ -30,6 +30,10 @@ export default class QuestionFive extends React.Component {
       'NOT THE ANSWER'
     )
   };
+
+  start = () => {
+    this.props.navigation.navigate('Home');
+  };
   render() {
     return (
       <LinearGradient colors={['#9c00e4', '#ff3803']} style={styles.container}>

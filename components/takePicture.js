@@ -6,64 +6,69 @@ import {
   Button,
   Text,
   TouchableOpacity,
-  TouchableHighlight
+  TouchableHighlight,
+  LinearGradient
 } from 'react-native';
 import { Camera, Permissions, ImageManipulator } from 'expo';
 
-export default class Picture extends React.Component {
+export default class takePicture extends React.Component {
   state = {
     image: {},
     hasCameraPermission: null,
-    type: Camera.Constants.Type.front,
-    email: this.props.navigation.getParam('email', 'not the email!'),
-    zip: this.props.navigation.getParam('zip', 'NOT THE ZIP'),
-    questionOneAnswer: this.props.navigation.getParam(
-      'questionOneAnswer',
-      'NOT THE ANSWER'
-    ),
-    questionTwoAnswer: this.props.navigation.getParam(
-      'questionTwoAnswer',
-      'NOT THE ANSWER'
-    ),
-    questionThreeAnswer: this.props.navigation.getParam(
-      'questionThreeAnswer',
-      'NOT THE ANSWER'
-    ),
-    questionFourAnswer: this.props.navigation.getParam(
-      'questionFourAnswer',
-      'NOT THE ANSWER'
-    ),
-    questionFiveAnswer: this.props.navigation.getParam(
-      'questionFiveAnswer',
-      'NOT THE ANSWER'
-    ),
-    questionSixAnswer: this.props.navigation.getParam(
-      'questionSixAnswer',
-      'NOT THE ANSWER'
-    )
+    type: Camera.Constants.Type.front
+    // email: this.props.navigation.getParam('email', 'not the email!'),
+    // zip: this.props.navigation.getParam('zip', 'NOT THE ZIP'),
+    // questionOneAnswer: this.props.navigation.getParam(
+    //   'questionOneAnswer',
+    //   'NOT THE ANSWER'
+    // ),
+    // questionTwoAnswer: this.props.navigation.getParam(
+    //   'questionTwoAnswer',
+    //   'NOT THE ANSWER'
+    // ),
+    // questionThreeAnswer: this.props.navigation.getParam(
+    //   'questionThreeAnswer',
+    //   'NOT THE ANSWER'
+    // ),
+    // questionFourAnswer: this.props.navigation.getParam(
+    //   'questionFourAnswer',
+    //   'NOT THE ANSWER'
+    // ),
+    // questionFiveAnswer: this.props.navigation.getParam(
+    //   'questionFiveAnswer',
+    //   'NOT THE ANSWER'
+    // ),
+    // questionSixAnswer: this.props.navigation.getParam(
+    //   'questionSixAnswer',
+    //   'NOT THE ANSWER'
+    // )
   };
 
-  componentDidMount() {
-    const feedback = {
-      email: this.state.email,
-      Answer1: this.state.questionOneAnswer,
-      Answer2: this.state.questionTwoAnswer,
-      Answer3: this.state.questionThreeAnswer,
-      Answer4: this.state.questionFourAnswer,
-      Answer5: this.state.questionFiveAnswer,
-      Answer6: this.state.questionSixAnswer,
-      Zipcode: this.state.zip
-    };
-    console.log('Testing' + feedback);
-    return axios.post(
-      'https://agile-hollows-10057.herokuapp.com/feedback/save',
-      feedback
-    );
-  }
+  // componentDidMount() {
+  //   const feedback = {
+  //     email: this.state.email,
+  //     Answer1: this.state.questionOneAnswer,
+  //     Answer2: this.state.questionTwoAnswer,
+  //     Answer3: this.state.questionThreeAnswer,
+  //     Answer4: this.state.questionFourAnswer,
+  //     Answer5: this.state.questionFiveAnswer,
+  //     Answer6: this.state.questionSixAnswer,
+  //     Zipcode: this.state.zip
+  //   };
+  //   console.log('Testing' + feedback);
+  //   return axios.post(
+  //     'https://agile-hollows-10057.herokuapp.com/feedback/save',
+  //     feedback
+  //   );
+  // }
   async componentDidMount() {
     const { status } = await Permissions.askAsync(Permissions.CAMERA);
     this.setState({ hasCameraPermission: status === 'granted' });
   }
+
+  start = () => {
+    this.props.navigation.navigate('Home');
+  };
 
   //Attempting to resize the image
 
@@ -116,15 +121,7 @@ export default class Picture extends React.Component {
   }
 
   render() {
-    const {
-      container,
-      textHeaderStyle,
-      nextButton,
-      buttonText,
-      topHalf,
-      bottomHalf,
-      myButton
-    } = styles;
+    const { container, myButton, skipButton } = styles;
     const { hasCameraPermission } = this.state;
     if (hasCameraPermission === null) {
       return <View />;
@@ -132,7 +129,7 @@ export default class Picture extends React.Component {
       return <Text>No access to camera</Text>;
     } else {
       return (
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 1 }} keyboardShouldPersistTaps={true}>
           <Camera
             style={{ flex: 1 }}
             type={this.state.type}
@@ -148,6 +145,16 @@ export default class Picture extends React.Component {
                 <Text
                   style={{ fontSize: 18, marginBottom: 10, color: 'white' }}
                 />
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={skipButton}
+                onPress={() => this.props.navigation.navigate('ThankYouTwo')}
+              >
+                <Text
+                  style={{ fontSize: 40, marginBottom: 30, color: 'white' }}
+                >
+                  SKIP!
+                </Text>
               </TouchableOpacity>
             </View>
           </Camera>
@@ -190,5 +197,16 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderColor: '#8A2BE2',
     borderWidth: 20
+  },
+  button: {
+    marginBottom: 30,
+    width: 260,
+    alignItems: 'center',
+    backgroundColor: 'white',
+    marginLeft: 20,
+    marginRight: 20
+  },
+  skipButton: {
+    marginBottom: 30
   }
 });

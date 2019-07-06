@@ -18,6 +18,10 @@ export default class QuestionTwo extends React.Component {
       'NOT THE ANSWER'
     )
   };
+
+  start = () => {
+    this.props.navigation.navigate('Home');
+  };
   render() {
     console.log(this.state);
     return (

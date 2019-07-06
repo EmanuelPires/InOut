@@ -37,6 +37,10 @@ export default class EmailZip extends React.Component {
     });
   };
 
+  start = () => {
+    this.props.navigation.navigate('Home');
+  };
+
   render() {
     const {
       container,

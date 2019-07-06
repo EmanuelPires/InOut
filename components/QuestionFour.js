@@ -26,6 +26,10 @@ export default class QuestionFour extends React.Component {
       'NOT THE ANSWER'
     )
   };
+
+  start = () => {
+    this.props.navigation.navigate('Home');
+  };
   render() {
     const { navigation } = this.props;
 

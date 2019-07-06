@@ -22,6 +22,10 @@ export default class QuestionThree extends React.Component {
       'NOT THE ANSWER'
     )
   };
+
+  start = () => {
+    this.props.navigation.navigate('Home');
+  };
   render() {
     console.log(this.state);
     const { navigation } = this.props;
@@ -79,7 +83,7 @@ export default class QuestionThree extends React.Component {
             underlayColor='white'
           >
             <View style={styles.button}>
-              <Text style={styles.buttonText}>C. WORKING</Text>
+              <Text style={styles.buttonText}>C. PERFORMANCES/CONCERTS</Text>
             </View>
           </TouchableHighlight>
           <TouchableHighlight

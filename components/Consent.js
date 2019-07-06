@@ -3,6 +3,9 @@ import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 import { LinearGradient } from 'expo';
 
 export default class Consent extends React.Component {
+  start = () => {
+    this.props.navigation.navigate('Home');
+  };
   render() {
     const {
       container,

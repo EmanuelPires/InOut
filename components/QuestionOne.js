@@ -15,6 +15,10 @@ export default class QuestionOne extends React.Component {
     zip: this.props.navigation.getParam('zip', 'NOT THE ZIP')
   };
 
+  start = () => {
+    this.props.navigation.navigate('Home');
+  };
+
   render() {
     console.log(this.state.email);
     console.log(this.state.zip);

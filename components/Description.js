@@ -10,6 +10,9 @@ import {
 import { LinearGradient } from 'expo';
 
 export default class Description extends React.Component {
+  start = () => {
+    this.props.navigation.navigate('Home');
+  };
   render() {
     const {
       container,
